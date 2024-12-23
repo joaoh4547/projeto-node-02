@@ -25,6 +25,7 @@
     "fastify": "^5.2.0",
     "knex": "^3.1.0",
     "projeto-node-02": "file:",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "zod": "^3.24.1"
   }
 }
