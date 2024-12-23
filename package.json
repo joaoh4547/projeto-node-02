@@ -12,11 +12,13 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@rocketseat/eslint-config": "^2.2.2",
     "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
     "eslint": "^9.17.0",
+    "tslint": "^5.20.1",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1"
   },
   "dependencies": {
     "fastify": "^5.2.0",

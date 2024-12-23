@@ -8,8 +8,8 @@ export const config: Knex.Config = {
     },
     useNullAsDefault: true,
     migrations : {
-      extension: "ts",
-      directory: "./db/migrations"
+        extension: "ts",
+        directory: "./db/migrations"
     }
 };
 const knex = setupKnex(config);
