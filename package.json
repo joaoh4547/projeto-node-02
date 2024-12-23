@@ -4,13 +4,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "lint": "eslint --config eslint.config.mjs src/ --fix"
+    "lint": "eslint --config eslint.config.mjs src/ --fix",
+    "knex": "node --import tsx ./node_modules/knex/bin/cli.js"
   },
   "keywords": [],
   "author": "João Henrique",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@rocketseat/eslint-config": "^2.2.2",
     "@types/node": "^22.10.2",
     "eslint": "^9.17.0",
     "tsx": "^4.19.2",
