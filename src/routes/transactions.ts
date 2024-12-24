@@ -4,7 +4,7 @@ import { z } from "zod";
 import { knex } from "../database";
 import { checkSessionIdExists } from "../middlewares/check-session-is-exists";
 export async function transactionRoutes(app: FastifyInstance) {
-
+   
     app.get("/", {
         preHandler: [checkSessionIdExists]
     }, async (req) => {
