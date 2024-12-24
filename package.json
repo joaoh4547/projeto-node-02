@@ -2,6 +2,9 @@
   "name": "projeto-node-02",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": ">= 18"
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "lint": "eslint --config eslint.config.mjs src/ --fix",
@@ -18,6 +21,7 @@
     "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^8.18.1",
     "eslint": "^9.17.0",
+    "sqlite3": "^5.1.7",
     "supertest": "^7.0.0",
     "tslint": "^5.20.1",
     "tsup": "^8.3.5",
@@ -31,8 +35,8 @@
     "dotenv": "^16.4.7",
     "fastify": "^5.2.0",
     "knex": "^3.1.0",
+    "pg": "^8.13.1",
     "projeto-node-02": "file:",
-    "sqlite3": "^5.1.7",
     "zod": "^3.24.1"
   }
 }
