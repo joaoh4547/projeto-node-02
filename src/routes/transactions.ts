@@ -71,7 +71,7 @@ export async function transactionRoutes(app: FastifyInstance) {
             session_id: sessionId
         });
 
-        return res.status(200).send();
+        return res.status(201).send();
     });
 
 }
