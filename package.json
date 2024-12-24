@@ -6,7 +6,8 @@
     "dev": "tsx watch src/server.ts",
     "lint": "eslint --config eslint.config.mjs src/ --fix",
     "knex": "node --import tsx ./node_modules/knex/bin/cli.js",
-    "test": "vitest"
+    "test": "vitest",
+    "build": "tsup src"
   },
   "keywords": [],
   "author": "João Henrique",
@@ -19,6 +20,7 @@
     "eslint": "^9.17.0",
     "supertest": "^7.0.0",
     "tslint": "^5.20.1",
+    "tsup": "^8.3.5",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1",

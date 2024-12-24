@@ -10,6 +10,8 @@ export default tseslint.config(
             semi: ["error", "always"],
             indent: ["error", 4],
             "linebreak-style": ["error", "unix"]
-        }
+        },
+        ignores: ["dist/**/*"]
+        
     }
 );

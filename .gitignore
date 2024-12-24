@@ -1,6 +1,8 @@
 node_modules
 .vscode
-database.sqlite
+*.sqlite
 test.sqlite
 .env
 .env.test
+dist
+knexfile.js
