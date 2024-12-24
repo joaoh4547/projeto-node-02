@@ -2,30 +2,45 @@ import { FastifyInstance } from "fastify";
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import { knex } from "../database";
+import { checkSessionIdExists } from "../middlewares/check-session-is-exists";
 export async function transactionRoutes(app: FastifyInstance) {
 
-    app.get("/", async (req, res) => {
-        const transactions = await knex("transactions").select("*");
-        return res.status(200).send({ data: transactions });
+    app.get("/", {
+        preHandler: [checkSessionIdExists]
+    }, async (req) => {
+        const { sessionId } = req.cookies;
+        const transactions = await knex("transactions").where("session_id", sessionId).select("*");
+        return { data: transactions };
     });
 
-    app.get("/:id", async (req, res) => {
+    app.get("/:id", {
+        preHandler: [checkSessionIdExists]
+    }, async (req, res) => {
 
         const getTransactionParamsSchema = z.object({
             id: z.string().uuid()
         });
 
+        const { sessionId } = req.cookies;
         const { id } = getTransactionParamsSchema.parse(req.params);
 
-        const transaction = await knex("transactions").where("id", id).first();
+        const transaction = await knex("transactions").where({
+            id,
+            session_id: sessionId
+        }).first();
         if (!transaction) {
             return res.status(404).send({ error: "Transaction not found" });
         }
         return res.status(200).send({ data: transaction });
     });
 
-    app.get("/summary", async () => {
-        const summary = await knex("transactions").sum("amount", { as: "amount" }).first();
+    app.get("/summary", {
+        preHandler: [checkSessionIdExists]
+    }, async (req) => {
+        const { sessionId } = req.cookies;
+        const summary = await knex("transactions")
+            .where("session_id", sessionId)
+            .sum("amount", { as: "amount" }).first();
         return { summary };
     });
 
@@ -44,7 +59,7 @@ export async function transactionRoutes(app: FastifyInstance) {
         if (!sessionId) {
             sessionId = randomUUID();
             res.setCookie("sessionId", sessionId, {
-                path: "/", 
+                path: "/",
                 maxAge: 60 * 60 * 24 * 7  // 7 days
             });
         }
